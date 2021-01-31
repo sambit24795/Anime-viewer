@@ -1,0 +1,7 @@
+{
+  "name": "animeViewer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

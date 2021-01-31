@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" color="primary"
+      >Home
+      <ion-icon src="../../../assets/icon/wing.svg"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-margin-top">
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-searchbar (ionChange)="onChangeText($event)"></ion-searchbar>
+        <ion-row *ngFor="let anime of (animes | async)" class="ion-padding">
+          <ion-col size="10" offset="1">
+            <ion-card class="ion-padding">
+              <ion-row
+                class="ion-align-items-center ion-justify-content-center"
+              >
+                <ion-col size="8" class="ion-no-padding">
+                  <img [src]="anime?.img" />
+                </ion-col>
+                <ion-col size="4" class="ion-text-center">
+                  <ion-text color="primary">
+                    <h3>score:</h3>
+                    <h4>{{ anime?.score }}</h4>
+                  </ion-text>
+
+                  <ion-button
+                    color="primary"
+                    shape="round"
+                    size="small"
+                    class="ion-justify-self-center"
+                    (click)="onClick(anime?.title)"
+                    >More</ion-button
+                  >
+                </ion-col>
+              </ion-row>
+              <ion-card-header>
+                <ion-card-title>
+                  <ion-text color="primary"
+                    ><h2>{{ anime?.title }}</h2></ion-text
+                  >
+                </ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="anime">
+        <ion-label color="primary">Anime</ion-label>
+        <ion-icon src="../../../assets/icon/hentai.svg"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="hentai">
+        <ion-label color="primary">Hentai</ion-label>
+        <ion-icon src="../../../assets/icon/anime.svg"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>

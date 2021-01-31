@@ -1,0 +1,13 @@
+ion-col {
+  position: relative;
+}
+
+ion-searchbar {
+  --color: var(--ion-color-primary);
+  --icon-color: var(--ion-color-primary);
+  --border-radius: 20px;
+  --placeholder-color: var(--ion-color-primary);
+  z-index: 100;
+  position: sticky;
+}
+

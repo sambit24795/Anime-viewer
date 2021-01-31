@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/home/anime"
+        color="primary"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-margin-top">
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-row class="ion-align-items-center ion-justify-content-center">
+          <ion-col size="8" class="ion-no-padding">
+            <img [src]="anime?.img" />
+          </ion-col>
+          <ion-col size="4" class="ion-text-center">
+            <ion-text color="primary">
+              <h2>Genres:</h2>
+            </ion-text>
+            <ion-row
+              *ngFor="let genre of anime?.genres"
+              class="ion-align-items-center ion-justify-content-center"
+            >
+              <ion-text color="secondary">
+                <h3>{{ genre }}</h3>
+              </ion-text>
+            </ion-row>
+            <ion-text color="primary">
+              <h2>Rating:</h2>
+            </ion-text>
+            <ion-row class="ion-align-items-center ion-justify-content-center">
+              <ion-text color="secondary">
+                <h3>{{ anime?.rating }}</h3>
+              </ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-card-header class="ion-no-padding">
+          <ion-card-title>
+            <ion-text color="primary">
+              <h1>{{ anime?.title }}</h1>
+            </ion-text>
+          </ion-card-title>
+          <ion-card-subtitle>
+            <ion-text color="primary" class="ion-no-padding">
+              <h2>
+                Status:<span class="ion-margin-start"
+                  ><ion-text color="primary">
+                    <h3>{{ anime?.status }}</h3>
+                  </ion-text></span
+                >
+              </h2>
+              <h2>
+                Type:<span class="ion-margin-start"
+                  ><ion-text color="primary">
+                    <h3>{{ anime?.type }}</h3>
+                  </ion-text></span
+                >
+              </h2>
+
+              <h2>
+                First Aired:<span class="ion-margin-start"
+                  ><ion-text color="primary">
+                    <h3>{{ anime?.firstAired }}</h3>
+                  </ion-text></span
+                >
+              </h2>
+            </ion-text>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content class="ion-no-padding">
+          <ion-text color="primary">
+            <p>{{ anime?.synopsis }}</p>
+          </ion-text>
+        </ion-card-content>
+        <ion-row>
+          <ion-row>
+            <ion-text color="primary">
+              <h2>
+                Episodes:<span class="ion-margin-start">
+                  <ion-text>
+                    <h3>{{ anime?.totalEps }}</h3>
+                  </ion-text>
+                </span>
+              </h2>
+            </ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-col
+              *ngFor="let episode of anime?.episodes"
+              class="ion-padding"
+            >
+              <ion-button
+                size="small"
+                color="primary"
+                fill="outline"
+                shape="round"
+                (click)="onEpisodeClick(episode.id)"
+              >
+                {{ episode.id.split('/').slice(-1) }}
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

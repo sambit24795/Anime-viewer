@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-toolbar>
+      <ion-segment value="popular" (ionChange)="onSegmentClicked($event)" >
+        <ion-segment-button value="popular">Popular</ion-segment-button>
+        <ion-segment-button value="ongoing">Ongoing</ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-virtual-scroll [items]="animes | async" approxItemHeight="300px">
+      <ion-row *virtualItem="let anime" class="ion-padding">
+        <ion-col size="10" offset="1">
+          <ion-card class="ion-padding">
+            <ion-row class="ion-align-items-center ion-justify-content-center">
+              <ion-col size="8" class="ion-no-padding">
+                <img [src]="anime?.img" />
+              </ion-col>
+              <ion-col size="4" class="ion-text-center">
+                <ion-text color="primary">
+                  <h3>score:</h3>
+                  <h4>{{ anime?.score }}</h4>
+                </ion-text>
+
+                <ion-button
+                  color="primary"
+                  shape="round"
+                  size="small"
+                  class="ion-justify-self-center"
+                  (click)="onClick(anime?.title)"
+                  >More</ion-button
+                >
+              </ion-col>
+            </ion-row>
+            <ion-card-header>
+              <ion-card-title>
+                <ion-text color="primary"><h2>{{ anime?.title }}</h2></ion-text>
+              </ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-virtual-scroll>
+  </ion-grid>
+</ion-content>
